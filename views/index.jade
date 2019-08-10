@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  h1 Find cycles algorithm
+  p This algorithm tries to find as many cycles as possible in a matrix.
+
+  h2 Usage instruction
+  p To use the algorithm, you have to supply the matrix in the following schema:
+  textarea(class="form-control", rows="4", readonly=true)
+    | a(0)|v(0,0),v(0,1),v(0,2),v(0,3)
+    | a(1)|v(1,0),v(1,1),v(1,2),v(1,3)
+    | a(2)|v(2,0),v(2,1),v(2,2),v(2,3)
+    | a(3)|v(3,0),v(3,1),v(3,2),v(3,3)
+  br
+  p Schema definition:
+    ul
+      li a(n)=number of assets in node n
+      li v(n,m)=number of vertices from node n to node m
+  p Requirements:
+    ul
+      li the matrix has to contain at least two rows.
+      li every row in the matrix has to match with regex: ^[0-9]+\|[0-9]+(,[0-9]+)*$
+      li every row has x columns, where x=the number of rows in the matrix.
+  p Example - matrix:
+  textarea(class="form-control", rows="4", readonly=true)
+    | 2|0,5,0,4
+    | 3|0,0,0,2
+    | 6|2,0,0,0
+    | 3|2,0,3,
+  br
+  p Example - graph (from the same matrix):
+  img(src="/images/ExampleGraph.png")
+  br
+  br
+
+  h2 Calculator
+  form(id="inputForm")
+    div(class="form-group")
+      label Matrix:
+      textarea(class="form-control" id="inputMatrix" rows="4")
+    button(id="btn" type="submit", class="btn btn-primary") Search
+  br
+  p(id="errorLabel",style="color:red; display:none; ")
+   
+  div(id="outputContainer",style="display: none;")
+    h2 Results
+    label Cycle count: 
+    label(id="outputCyclesCount")
+    br
+    label Cycles:
+    textarea(class="form-control" id="outputCycles", rows="4", readonly=true)
+    label Remaining matrix:
+    textarea(class="form-control" id="outputMatrix", rows="4", readonly=true)
+ 
+  script(src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous")
+  //- script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
+  script(src='/javascripts/findCycles.js')

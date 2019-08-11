@@ -18,9 +18,10 @@ block content
       li v(n,m)=number of vertices from node n to node m
   p Requirements:
     ul
-      li the matrix has to contain at least two rows.
+      li the matrix has to contain at least two rows
       li every row in the matrix has to match with regex: ^[0-9]+\|[0-9]+(,[0-9]+)*$
-      li every row has x columns, where x=the number of rows in the matrix.
+      li every row has x columns, where x=the number of rows in the matrix
+      li nodes may not be self referencing: v(n,n)= 0
   p Example - matrix:
   textarea(class="form-control", rows="4", readonly=true)
     | 2|0,5,0,4

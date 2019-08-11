@@ -43,6 +43,17 @@ function findCycles() {
       return;
     }
   }
+
+  // Check self referencing nodes
+  for (index = 0; index < matrixRows.length; index++) {
+    var columns = matrixRows[index].split('|')[1];
+    var nrOfVertices = columns.split(',')[index];
+    if (nrOfVertices != 0) {
+      $("#errorLabel").text(`Line ${index+1}: node ${index} is self referencing with ${nrOfVertices} vertices!`)
+      $("#errorLabel").show();
+      return;
+    }
+  }
   
   // Transform - Parse matrix into network and assets.
   var network = [];

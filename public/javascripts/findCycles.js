@@ -23,7 +23,7 @@ function findCycles() {
   // - the matrix has to match with the regex.
   // regex built with: https://regex101.com/
   // (note: backslash had to be double escaped, so I replaced \ with \\)
-  var regex = new RegExp('^[0-9]+\\|[0-9]+(,[0-9]+)*$');
+  var regex = new RegExp('^(0|[1-9][0-9]*)\\|(0|[1-9][0-9]*)(,(0|[1-9][0-9]*))*$');
   for (index = 0; index < matrixRows.length; index++) {
     if (!regex.test(matrixRows[index])) {
       $("#errorLabel").text(`Line ${index+1}: regex test failed!`)
